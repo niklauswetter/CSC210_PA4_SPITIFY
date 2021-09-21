@@ -29,7 +29,7 @@ public class Song
 
     public void play()
     {
-        //STUB--maybe
+        System.out.println("Playing: \""+this.title+"\", by "+this.artist);
         this.timesPlayed++;
     }
 

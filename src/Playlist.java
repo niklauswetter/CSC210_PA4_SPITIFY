@@ -32,15 +32,15 @@ public class Playlist
 
     public void Play()
     {
-        //STUB
+        System.out.println("Playing playlist \""+this.name+"\":");
+        for(Song s: this.playlist)
+            s.play();
     }
 
     public void removeSong(Song song)
     {
         if(this.playlist.contains(song))
-            this.playlist.add(song);
+            this.playlist.remove(song);
     }
-
-    //No toString?
 
 }

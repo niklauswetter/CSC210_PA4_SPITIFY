@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Library
@@ -8,12 +10,17 @@ public class Library
     //Functions
     public Library()
     {
-        //STUB
+        //Default constructor
     }
 
     public Song getSong(String title)
     {
-        //STUB
+        for(Song s: this.songLibrary)
+        {
+            if(s.getTitle().equals(title))
+                return s;
+        }
+        return null;
     }
 
     public void addSong(Song song)
@@ -31,6 +38,35 @@ public class Library
     @Override
     public String toString()
     {
-        //STUB
+        Collections.sort(this.songLibrary, new Comparator<Song>() {
+            @Override
+            public int compare(Song o1, Song o2) {
+                return o1.getTitle().compareTo(o2.getTitle());
+            }
+        });
+        String result = "";
+        for(Song s:this.songLibrary)
+            result+=s+"\n";
+        return result;
+    }
+
+    //Private helper methods
+    //If return > 0 s1 comes after s2, if return < 0 s1 comes before s2
+    private int compareStrings(String s1, String s2)
+    {
+        for(int i = 0; i< s1.length() && i< s2.length(); i++)
+        {
+            if((int)s1.charAt(i) == (int)s2.charAt(i))
+                continue;
+            else
+                return (int)s1.charAt(i)-(int) s2.charAt(i);
+        }
+
+        if(s1.length()<s2.length())
+            return (s1.length()-s2.length());
+        else if (s1.length()>s2.length())
+            return (s1.length()-s2.length());
+        else
+            return 0;
     }
 }

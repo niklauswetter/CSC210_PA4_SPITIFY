@@ -22,8 +22,10 @@ public class User
 
     public boolean attemptLogin(String password)
     {
-        //STUB
-        return false;
+        if(this.password.equals(password))
+            return true;
+        else
+            return false;
     }
 
     public void addPlaylist(Playlist playlist)
@@ -38,7 +40,13 @@ public class User
 
     public void selectPlaylist(String name)
     {
-        //STUB
+        for(Playlist p:this.playlists)
+        {
+            if(p.getName().equals(name)) {
+                p.Play();
+                return;
+            }
+        }
     }
 
     @Override
